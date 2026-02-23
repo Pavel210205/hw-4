@@ -1,11 +1,16 @@
 import React from 'react';
 import { fetchProducts } from 'store/products';
 
+import { Link } from 'react-router-dom';
+import { routes } from 'config/routes';
+
+import FullCardErr from './components/FullCardErr';
 import Text from 'components/Text';
 import FullCard from './components/FullCard';
 import Card from 'components/Card';
 import Button from 'components/Button';
 import ButtonBack from 'components/ButtonBack';
+import CardSkeleton from 'components/CardSkeleton';
 
 import s from './ProductPage.module.scss';
 
@@ -27,7 +32,6 @@ type Product = {
 };
 
 export default function ProductPage() {
-  const arr = [1, 2, 3];
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [data, setData] = React.useState<Product[]>([]);
@@ -52,12 +56,12 @@ export default function ProductPage() {
   return (
     <main className={s.main}>
       <ButtonBack />
-      <FullCard />
+      {error ? <FullCardErr /> : <FullCard />}
       <Text view="subtitle" color="primary" weight="bold" className={s.title__related}>
         Related Items
       </Text>
       <div className={s.relatedItems}>
-        {data &&
+        {!loading ? (
           data.map((item, index) => (
             <Card
               key={index}
@@ -67,9 +71,12 @@ export default function ProductPage() {
               subtitle={item.description}
               captionSlot={item.productCategory?.title}
               contentSlot={item.price}
-              actionSlot={<Button>Action</Button>}
+              actionSlot={<Button>Add to Cart</Button>}
             />
-          ))}
+          ))
+        ) : (
+          <CardSkeleton countSceletons={3} />
+        )}
       </div>
     </main>
   );

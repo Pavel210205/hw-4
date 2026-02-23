@@ -20,4 +20,4 @@ const HeaderElement: React.FC<HeaderElementProps> = ({ className }) => {
   );
 };
 
-export default HeaderElement;
+export default React.memo(HeaderElement);

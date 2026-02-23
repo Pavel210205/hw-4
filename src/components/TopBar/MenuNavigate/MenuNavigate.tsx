@@ -13,24 +13,30 @@ const MenuNavigate: React.FC<MenuNavigateProps> = ({ isOpened }) => {
   return (
     <nav>
       <ul className={cn(s.menu, isOpened && s.menu__open)}>
-        <NavLink
-          to={routes.main.mask}
-          className={({ isActive }) => cn(s.item, isActive && s.active)}
-        >
-          <li>Products</li>
-        </NavLink>
-        <NavLink
-          to={routes.categories.mask}
-          className={({ isActive }) => cn(s.item, isActive && s.active)}
-        >
-          <li>Categories</li>
-        </NavLink>
-        <NavLink
-          to={routes.about.mask}
-          className={({ isActive }) => cn(s.item, isActive && s.active)}
-        >
-          <li>About us</li>
-        </NavLink>
+        <li>
+          <NavLink
+            to={routes.main.mask}
+            className={({ isActive }) => cn(s.item, isActive && s.active)}
+          >
+            Products
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={routes.categories.mask}
+            className={({ isActive }) => cn(s.item, isActive && s.active)}
+          >
+            Categories
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={routes.about.mask}
+            className={({ isActive }) => cn(s.item, isActive && s.active)}
+          >
+            About us
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

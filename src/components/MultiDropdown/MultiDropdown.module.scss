@@ -3,7 +3,8 @@
   max-width: 300px;
   position: relative;
   display: inline-block;
-  &.open:focus-within {
+  border: 1px solid transparent;
+  &:focus-within {
     border: 1px solid var(--input-border-focus);
   }
 }
@@ -23,7 +24,7 @@
     padding: 16px 46px 16px 12px;
   }
   &.open {
-    color: var(--text-secondary) !important;
+    color: var(--text-secondary);
   }
 
   &.disabled {
@@ -35,6 +36,7 @@
 }
 .link {
   position: absolute;
+  cursor: pointer;
   z-index: 1;
   left: 0;
   right: 0;
@@ -52,5 +54,11 @@
   }
   &.active {
     color: var(--brand);
+  }
+}
+.icon {
+  transition: 0.3s;
+  &__active {
+    transform: rotate(180deg);
   }
 }

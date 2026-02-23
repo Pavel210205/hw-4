@@ -9,7 +9,6 @@ import Button from 'components/Button';
 import Slider from 'components/Slider';
 
 import s from './FullCard.module.scss';
-import { log } from 'utils/log';
 
 interface Images {
   url: string;
@@ -29,7 +28,6 @@ type Product = {
 };
 
 const FullCard: React.FC = () => {
-  const arr = [1, 2, 3];
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [data, setData] = React.useState<Product>();
@@ -42,17 +40,15 @@ const FullCard: React.FC = () => {
       const productData = await fetchProduct(productId);
       setData(productData);
     } catch (err) {
-      console.error('Не удалось загрузить продукты:', err);
+      console.error('Не удалось загрузить продукт:', err);
       setError(true);
     } finally {
       setLoading(false);
-      log(data);
     }
   }, []);
-  log(data);
   React.useEffect(() => {
     if (id) loadProducts(id);
-  }, [loadProducts]);
+  }, [loadProducts, id]);
   return (
     <div className={s.fullCard}>
       <div className={s.slider}>
@@ -71,10 +67,10 @@ const FullCard: React.FC = () => {
         </Text>
         <div className={s.buttons}>
           <Button className={s.button}>В корзину</Button>
-          <Button className={cn(s.button, s.button__secondary)}>Подробнее</Button>
+          <Button className={cn(s.button__secondary, s.button)}>Подробнее</Button>
         </div>
       </div>
     </div>
   );
 };
-export default FullCard;
+export default React.memo(FullCard);

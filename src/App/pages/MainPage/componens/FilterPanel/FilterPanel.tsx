@@ -10,11 +10,11 @@ import s from './FilterPanel.module.scss';
 
 import { api } from 'config/api.ts';
 import { setRequest } from 'config/setRequest';
-import { log } from 'utils/log';
 
 export type FilterPanelProps = {};
+
 const FilterPanel: React.FC<FilterPanelProps> = () => {
-  const [seachValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState('');
   const [categoriesValue, setCategoriesValue] = React.useState<Option[]>([]);
 
   const [data, setData] = React.useState<Option[]>([]);
@@ -22,7 +22,6 @@ const FilterPanel: React.FC<FilterPanelProps> = () => {
     try {
       const productsData = await setRequest.get(api.CATEGORIES);
       setData(productsData.data.data);
-      log(productsData.data.data);
     } catch (err) {
       console.error('Не удалось загрузить категории:', err);
     }
@@ -32,16 +31,18 @@ const FilterPanel: React.FC<FilterPanelProps> = () => {
     loadCategories();
   }, []);
 
-  const handleMultiDropdownChange = (newValue: Option[]) => {
+  const handleMultiDropdownChange = React.useCallback((newValue: Option[]) => {
     setCategoriesValue(newValue);
-    log(newValue);
-  };
+  }, []);
+  const handleSearchChange = React.useCallback((value: string) => {
+    setSearchValue(value);
+  }, []);
   return (
-    <div className={s.form}>
+    <div className={s.filters}>
       <div className={s.search}>
         <Input
-          value={seachValue}
-          onChange={(value) => setSearchValue(value)}
+          value={searchValue}
+          onChange={(value) => handleSearchChange(value)}
           placeholder="Search product"
         />
         <Button loading={false}>Find now</Button>
@@ -60,4 +61,4 @@ const FilterPanel: React.FC<FilterPanelProps> = () => {
   );
 };
 
-export default FilterPanel;
+export default React.memo(FilterPanel);

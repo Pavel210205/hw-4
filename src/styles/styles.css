@@ -1,7 +1,7 @@
 @import './Roboto/fonts.css';
 @import './variables.scss';
 .wrapper {
-  min-height: 100vh;
+  min-height: 100dvh;
 
   overflow: hidden;
   background-color: var(--bg-page);
@@ -102,7 +102,6 @@ input[type='radio'] {
 
 input[type='search'] {
   cursor: pointer;
-  -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -136,7 +135,6 @@ canvas {
   display: block;
   max-width: 100%;
   height: auto;
-  vertical-align: middle;
 }
 
 img,

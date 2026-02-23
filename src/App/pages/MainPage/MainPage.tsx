@@ -1,6 +1,5 @@
 import React from 'react';
 import { fetchProducts } from 'store/products';
-import { Navigate } from 'react-router-dom';
 
 import FilterPanel from './componens/FilterPanel';
 import HeaderElement from './componens/HeaderElement';
@@ -28,12 +27,8 @@ type Product = {
 };
 
 const MainPage: React.FC = () => {
-  const arr = new Array(100).fill(1);
   const [loading, setLoading] = React.useState(true);
   const [data, setData] = React.useState<Product[]>([]);
-  const [search, setSearch] = React.useState('');
-  const [category, setCategory] = React.useState('');
-  const [sort, setSort] = React.useState('');
   const [total, setTotal] = React.useState(0);
   const loadProducts = React.useCallback(async () => {
     setLoading(true);
@@ -51,22 +46,6 @@ const MainPage: React.FC = () => {
   React.useEffect(() => {
     loadProducts();
   }, [loadProducts]);
-
-  // Обработчики для фильтров
-  const handleSearchChange = (value: string) => {
-    setSearch(value);
-    // Здесь можно добавить фильтрацию данных
-  };
-
-  const handleCategoryChange = (value: string) => {
-    setCategory(value);
-    // Здесь можно добавить фильтрацию по категории
-  };
-
-  const handleSortChange = (value: string) => {
-    setSort(value);
-    // Здесь можно добавить сортировку данных
-  };
   return (
     <>
       <HeaderElement />

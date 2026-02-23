@@ -1,0 +1,15 @@
+@use '../../../../../styles/variables.scss' as *;
+@use '../../../../../styles/mixins.scss' as *;
+.filters {
+  margin-top: 50px;
+}
+.search {
+  display: flex;
+  gap: 24px;
+  @include respond(sm) {
+    flex-direction: column;
+  }
+}
+.filter {
+  margin-top: 24px;
+}

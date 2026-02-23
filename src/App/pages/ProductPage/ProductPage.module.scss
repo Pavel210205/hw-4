@@ -1,0 +1,25 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.main {
+  padding-top: 150px;
+  padding-bottom: 146px;
+  min-height: 100vh;
+}
+.title__related {
+  padding-top: 48px;
+}
+.relatedItems {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(290px, 1fr));
+  grid-column-gap: 20px;
+  grid-row-gap: 30px;
+
+  @include respond(lg) {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+  }
+  @include respond(sm) {
+    grid-template-columns: repeat(1, minmax(290px, 1fr));
+  }
+}

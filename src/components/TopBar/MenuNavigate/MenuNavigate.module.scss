@@ -1,0 +1,51 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+.nav {
+}
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @include respond(md) {
+    position: absolute;
+    z-index: 100;
+    top: 90px;
+    left: 100vw;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-page);
+    padding: 20px 40px;
+    flex-direction: column;
+    align-items: start;
+    transition: all 0.3s ease-in-out;
+    &__open {
+      left: 0;
+      gap: 15px;
+    }
+  }
+}
+.item {
+  list-style: none;
+  cursor: pointer;
+  padding: 34px 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 122%;
+  color: var(--text-primary);
+  border-bottom: 2px solid transparent;
+  @include respond(md) {
+    padding: 15px 0;
+    font-size: 20px;
+  }
+
+  &:hover {
+    transition: all 0.3s ease-in-out;
+    color: var(--brand);
+  }
+  &.active {
+    font-weight: 600;
+    color: var(--brand);
+    border-bottom: 2px solid var(--brand);
+  }
+}

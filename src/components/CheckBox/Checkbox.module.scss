@@ -1,0 +1,46 @@
+@use '../../styles/variables.scss' as *;
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+
+    &:hover:not(:disabled) + .checkbox__custom {
+      border-color: #518581;
+    }
+
+    &:disabled + .checkbox__custom {
+      background-color: #f6f5f5;
+      border: 1px solid #f6f5f5;
+    }
+    &:disabled + .checkbox__custom .checkbox__icon path {
+      stroke: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__custom {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid white;
+    background-color: white;
+    transition: all 0.2s ease;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

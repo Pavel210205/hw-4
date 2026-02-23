@@ -1,0 +1,64 @@
+@use '../../styles/variables.scss' as *;
+.multiDropdown {
+  max-width: 300px;
+  position: relative;
+  display: inline-block;
+  border: 1px solid transparent;
+  &:focus-within {
+    border: 1px solid var(--input-border-focus);
+  }
+}
+.input {
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease;
+  &[type='text'] {
+    padding: 16px 46px 16px 12px;
+  }
+  &.open {
+    color: var(--text-secondary);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    border: 1px solid var(--input-border-disabled);
+    background: var(--input-bg-disabled);
+    color: var(--input-text-disabled);
+  }
+}
+.link {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 60px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+  background: var(--button-primary-text);
+}
+.list {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  padding: 14px 12px;
+  &:hover {
+    color: var(--text-secondary) !important;
+  }
+  &.active {
+    color: var(--brand);
+  }
+}
+.icon {
+  transition: 0.3s;
+  &__active {
+    transform: rotate(180deg);
+  }
+}

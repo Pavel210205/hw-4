@@ -1,0 +1,41 @@
+@use '../../styles/variables.scss' as *;
+
+.button {
+  font-family: 'Roboto';
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 8px;
+  padding: 14px 20px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: var(--button-primary-text);
+  background: var(--brand);
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: var(--brand-hover);
+    color: var(--button-primary-text-hover);
+  }
+  &:active {
+    background: var(--brand-active);
+    color: var(--button-primary-text-active);
+  }
+
+  & span {
+    margin: 3px 0;
+  }
+}
+.disabled {
+  pointer-events: none;
+  background: var(--button-primary-bg-disabled);
+  color: var(--button-primary-text-disabled);
+}
+.loader {
+  color: inherit;
+}
+.loading {
+  pointer-events: none;
+}

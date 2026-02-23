@@ -1,0 +1,78 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+.topbar {
+  background: var(--bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  border-bottom: 2px solid #f3f3f3;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 15px;
+}
+.icons {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  display: block;
+  padding: 12px;
+  color: var(--text-primary);
+  &:hover svg {
+    transition: all 0.3s ease-in-out;
+    color: var(--brand);
+  }
+}
+
+.menu__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  &:hover span {
+    background: var(--brand);
+  }
+
+  @include respond(md) {
+    display: flex;
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+    transform: translateY(0);
+  }
+
+  &.open {
+    span {
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(0, -50%);
+        top: 50%;
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(0, 50%);
+        bottom: 50%;
+      }
+    }
+  }
+}

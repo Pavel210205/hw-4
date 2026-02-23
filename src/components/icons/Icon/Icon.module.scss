@@ -1,0 +1,10 @@
+@use '../../../styles/variables.scss' as *;
+.primary {
+  color: var(--text-primary);
+}
+.secondary {
+  color: var(--text-secondary);
+}
+.accent {
+  color: var(--text-accent);
+}

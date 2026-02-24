@@ -1,5 +1,6 @@
-@use '../../../../../styles/variables.scss' as *;
-@use '../../../../../styles/mixins.scss' as *;
+@use 'styles/variables.scss' as *;
+@use 'styles/mixins.scss' as *;
+
 .fullCard {
   display: flex;
   margin-top: 32px;
@@ -7,6 +8,7 @@
   @include respond(md) {
     flex-direction: column;
     gap: 55px;
+    background-color: var(--text-primary);
   }
 }
 .slider,

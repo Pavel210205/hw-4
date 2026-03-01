@@ -4,6 +4,7 @@ import App from '../App';
 import MainPage from 'App/pages/MainPage';
 import PageEmpty from 'App/pages/PageEmpty';
 import ProductPage from 'App/pages/ProductPage';
+import CartPage from 'App/pages/CartPage';
 
 export const routesConfig: RouteObject[] = [
   {
@@ -22,6 +23,7 @@ export const routesConfig: RouteObject[] = [
         path: routes.product.mask,
         element: <ProductPage />,
       },
+      { path: routes.cart.mask, element: <CartPage /> },
     ],
   },
 ];

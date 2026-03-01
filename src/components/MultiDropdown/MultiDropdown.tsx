@@ -61,13 +61,12 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   }, [isOpened]);
 
   const title = React.useMemo(() => getTitle(value), [getTitle, value]);
-
   const isEmpty = value.length === 0;
 
   const filteredOptions = React.useMemo(() => {
     const str = filter.toLocaleLowerCase();
 
-    return options.filter((o) => o.title.toLocaleLowerCase().indexOf(str) === 0);
+    return options.filter((o) => o.title.toLocaleLowerCase().includes(str));
   }, [filter, options]);
   const selectedKeysSet = React.useMemo<Set<Option['documentId']>>(
     () => new Set(value.map(({ documentId }) => documentId)),
@@ -76,24 +75,16 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
 
   const onSelect = React.useCallback(
     (option: Option) => {
-      // Если компонент отключён (disabled), сразу завершаем выполнение функции
       if (disabled) {
         return;
       }
-
-      // Проверяем, уже ли выбрана данная опция (есть ли её ключ в наборе selectedKeysSet)
       if (selectedKeysSet.has(option.documentId)) {
-        // Если опция уже выбрана — удаляем её из списка выбранных опций (value)
         onChange([...value].filter(({ documentId }) => documentId !== option.documentId));
       } else {
-        // Если опция ещё не выбрана — добавляем её в список выбранных опций
         onChange([...value, option]);
       }
-
-      // Устанавливаем фокус на элемент, связанный с ref (если ref.current существует)
       ref.current?.focus();
     },
-    // Зависимости для useCallback: функция будет пересоздана только при изменении этих значений
     [disabled, onChange, value, selectedKeysSet]
   );
 
@@ -133,4 +124,4 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   );
 };
 
-export default MultiDropdown;
+export default React.memo(MultiDropdown);

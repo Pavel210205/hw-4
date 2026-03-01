@@ -12,8 +12,8 @@ export const routes = {
     create: (id: string) => `/product/${id}`,
   },
   cart: {
-    mask: '/cart/:id',
-    create: (id: number) => `/cart/${id}`,
+    mask: '/cart',
+    create: () => `/cart`,
   },
   categories: {
     mask: '/categories',

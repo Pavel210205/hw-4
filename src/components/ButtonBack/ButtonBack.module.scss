@@ -1,0 +1,24 @@
+@use 'styles/variables.scss' as *;
+@use 'styles/mixins.scss' as *;
+.back {
+  padding: 12px;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  cursor: pointer;
+  color: var(--text-primary);
+
+  &:hover &__text {
+    color: var(--brand);
+    transition: all 0.3s ease-in-out;
+  }
+  &__icon {
+    transition: all 0.3s ease-in-out;
+    transform: rotate(180deg);
+  }
+  &:hover &__icon {
+    translate: -5px;
+    color: var(--brand);
+  }
+}

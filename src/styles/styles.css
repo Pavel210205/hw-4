@@ -1,0 +1,177 @@
+@import './Roboto/fonts.css';
+@import './variables.scss';
+.wrapper {
+  min-height: 100dvh;
+
+  overflow: hidden;
+  background-color: var(--bg-page);
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+address,
+figure,
+fieldset,
+legend,
+menu,
+nav {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--ff);
+  line-height: 1.5;
+  color: var(--text-primary); /* нейтральный тёмный */
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input,
+textarea,
+select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type='search'] {
+  cursor: pointer;
+  outline-offset: -2px;
+}
+
+input[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  text-align: left;
+}
+
+img,
+svg,
+video,
+audio,
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img,
+svg {
+  border-style: none;
+}
+
+/* 12. Убираем лишние отступы у HTML5‑элементов */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* 13. Нормализация кнопок и интерактивных элементов */
+button:active,
+button:focus {
+  outline: none;
+  border: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* 14. Убираем мигающие рамки у фокусов (по желанию) */
+*:focus {
+  outline: none;
+}

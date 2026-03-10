@@ -1,0 +1,41 @@
+@use 'styles/variables.scss' as *;
+@use 'styles/mixins.scss' as *;
+
+.fullCard {
+  display: flex;
+  margin-top: 32px;
+  gap: 48px;
+  @include respond(md) {
+    flex-direction: column;
+    gap: 55px;
+  }
+}
+.slider,
+.fullCard__container {
+  flex: 1 1 50%;
+}
+.slider img {
+  object-fit: cover;
+  height: auto; /* Сохраняем пропорции изображения */
+}
+
+.subtitle {
+  margin-top: 24px;
+}
+.price {
+  margin-top: 80px;
+}
+.buttons {
+  margin-top: 48px;
+  display: flex;
+  gap: 48px;
+}
+
+.button__secondary {
+  border: 1px solid var(--text-secondary);
+  background-color: transparent;
+  color: var(--text-primary);
+  &:focus {
+    border: 1px solid var(--text-secondary);
+  }
+}
